@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+get_word() {
+	lines=$(wc -l /usr/share/dict/words | cut -d' ' -f1) &&
+	i=$(( ($lines + $RANDOM) % $lines )) &&
+	head -$i /usr/share/dict/words | tail -1 | tr -d '\n' | tr -d "'";
+}
+
+count=${1:-5} # get count from first argument or default to '5'
+count=$(( $count - 1 ))
+for ((w=0; w<$count; w++)); do
+	output+=$(get_word)-
+done
+output+=$(get_word)
+
+echo $output
