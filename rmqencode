@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# RabbitMQ Password encoding
+# $ ./rmqencode "super-secret"
+# eMX6jcZEJP9BFFIyjXgGqWEMaJ/xt6H2I8V5ZfEYznrjOBMn
+# For use e.g. in rmq's definitions.json
+# https://www.rabbitmq.com/definitions.html
+
 RAW="$1"
 SALT=$(od -A n -t x -N 4 /dev/urandom)
 PASS=$SALT$(echo -n $RAW | xxd -ps | tr -d '\n' | tr -d ' ')
