@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Random word phrase generator for low security passwords
+
 get_word() {
 	lines=$(wc -l /usr/share/dict/words | cut -d' ' -f1) &&
 	i=$(( ($lines + $RANDOM) % $lines )) &&
