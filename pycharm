@@ -2,7 +2,10 @@
 set -e
 
 # TODO: if macos/linux, do sth else
-
+if [[ $(uname -s) == 'Darwin' ]]; then
+    open -na "PyCharm.app" --args "$@"
+    exit 0
+fi
 
 
 ## WSL/Windows:
