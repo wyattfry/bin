@@ -3,7 +3,7 @@
 # Random word phrase generator for low security passwords
 
 get_word() {
-	lines=$(wc -l /usr/share/dict/words | cut -d' ' -f1) &&
+	lines=$(wc -l /usr/share/dict/words | awk '{print $1}') &&
 	i=$(( ($lines + $RANDOM) % $lines )) &&
 	head -$i /usr/share/dict/words | tail -1 | tr -d '\n' | tr -d "'";
 }
